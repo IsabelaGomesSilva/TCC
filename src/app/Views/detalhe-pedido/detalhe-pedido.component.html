@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<app-menu></app-menu>
+<main>
+    <div class="table-title">
+        <h2>Detalhes do pedido</h2>
+        <a href="#"
+         class="btn btn-sucess"data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="escondeBotao()">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Novo
+        </a>
+    </div>
+    
+   
+                <!-- <th>Forma de pagamento</th> -->
+         
+             <!--<th>{{detPedido.id}}</th> -->
+                <!-- <th>{{detPedido.idOrder}}</th>
+                <th>{{detPedido.idProduct}}</th>
+                <th>{{detPedido.amountOrder}}</th>
+                <th>{{detPedido.valueUni}}</th>
+                <th>{{detPedido.subTotal}}</th> -->
+                <!-- <th>{{pedido.idPayment}}</th> -->
+               <th>
+                 <button type="submit" class="btn-editar"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                 <!-- (click)="editarDetPedido(detPedido,exampleModal)" -->
+                 <button type="submit" class="btn-excluir"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                 <!-- (click)="excluir(detPedido,staticBackdrop)"  -->
+               </th>
+         
+    
+    
+<!-- Modal Inserir/Alterar-->
+
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nova compra</h5>
+      </div>
+      <div class="modal-body">
+        <form method="post" #detPedidosForm="ngForm"></form>
+        <input type="text" name="txtproduto" id="" class="DescCat" placeholder="Produto:" [(ngModel)]="produto"  required ngModel>
+        <input type="text" name="txtpedido" id="" class="DescCat" placeholder="Compra:" [(ngModel)]="compra"  required ngModel>
+        <input type="number" name="numbvalorunit" id="" class="DescCat" placeholder="Valor unitário:" [(ngModel)]="valorUni"  required ngModel>
+        <input type="number" name="numbvalorunit" id="" class="DescCat" placeholder="Quantidade:" [(ngModel)]="quantd"  required ngModel>
+        <input type="number" name="numbsubtotal" id="" class="DescCat" placeholder="SubTotal:" [(ngModel)]="subTotal"  required ngModel>
+        <input type="text" name="txtFormaPagamento" id="formaPagament" class="DescCat" placeholder="Forma de pagamento:" [(ngModel)]="pagament" required ngModel>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="closer" class="fechar btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="salvar btn btn-primary" (click)="postDetPedidos()">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Excluir -->
+
+<div class="modal fade" id="staticBackdrop" #confirm data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Excluir...</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4>Deseja realmente Excluir?</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancel" class="fechar btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="salvar btn btn-primary" *ngIf="botaoAdd" (click)="excluirDetPedido(confirm)">Excluir</button>
+        <button type="button" class="salvar btn btn-primary" *ngIf="botaoUpdate"  (click)="editarDetPedidoUpdate(editar)">Alterar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>

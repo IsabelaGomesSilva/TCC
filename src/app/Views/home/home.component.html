@@ -1,0 +1,156 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<app-menu></app-menu>
+<main id="conteudo" >
+
+  <ul>
+    <li>
+     <a href="categoria">
+          <h3>Categoria</h3> 
+      </a> 
+    </li>
+    <li> 
+      <a href="cliente" >
+          <h3>Cliente</h3>
+      </a>
+    </li>
+    <li> 
+      <a href="compra" >
+          <h3>Compra</h3>
+      </a>
+    </li>
+    <li> 
+      <a href="fornecedor" >
+          <h3>Fornecedor</h3>
+      </a>
+    </li>
+    <li>
+      <a href="pagamento" >
+          <h3>Pagamento</h3>
+      </a>
+    </li>
+    <li>
+      <a href="pedido" >
+          <h3>Pedido</h3>
+      </a>
+    </li>
+    <li>
+      <a href="produto" >
+          <h3>Produto</h3>
+      </a>
+    </li>
+   </ul>
+ 
+    
+<div class="card-table"> 
+  
+  <div class="card-body">
+   
+    <div class="table-responsive" >  
+      <div class="table-title">
+        <h2>Pedidos recentes</h2>
+        <a href="#"
+         class="btn btn-sucess"data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Novo
+        </a>
+    </div>
+    <table width="100%">
+      <thead>
+       <tr>
+         <td>Nome</td>
+         <td>Ações</td>
+         <td>Data e hora</td>
+       </tr>
+      </thead>
+      <tbody>
+       <tr>
+         <td>Peças</td>
+         <td>Data e hora</td>
+         <td class="botoes">
+           <button type="submit" class="btn-editar"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+           <button type="submit" class="btn-excluir"><i class="fa fa-trash" aria-hidden="true"></i></button>
+         </td>
+       </tr>
+       <tr>
+         <td>Peças</td>
+         <td>Data e hora</td>
+         <td class="botoes">
+           <button type="submit" class="btn-editar"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+           <button type="submit" class="btn-excluir"><i class="fa fa-trash" aria-hidden="true"></i></button>
+         </td>
+       </tr>
+       <tr>
+         <td>Peças</td>
+         <td>Data e hora</td>
+         <td class="botoes">
+           <button type="submit" class="btn-editar"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+           <button type="submit" class="btn-excluir"><i class="fa fa-trash" aria-hidden="true"></i></button>
+         </td>
+       </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+ 
+  <div class="card-body">
+    <div class="table-responsive">
+      <div class="table-title">
+        <h2>Estoque baixo</h2> 
+      </div>
+    <table width="100%">
+      <thead>
+       <tr>
+            <td>Valor </td>
+            <td>Data e hora</td>
+            <td>Ações</td>
+       </tr>
+      </thead>
+      <tbody>
+       <tr>
+         <td>Peças</td>
+         <td>Data e hora</td>
+         <td class="botoes">
+           <button type="submit" class="btn-editar"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+           <button type="submit" class="btn-excluir"><i class="fa fa-trash" aria-hidden="true"></i></button>
+         </td>
+       </tr>
+       <tr>
+         <td>Peças</td>
+         <td>Data e hora</td>
+         <td class="botoes">
+           <button type="submit" class="btn-editar"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+           <button type="submit" class="btn-excluir"><i class="fa fa-trash" aria-hidden="true"></i></button>
+         </td>
+       </tr>
+       <tr>
+         <td>Peças</td>
+         <td>Data e hora</td>
+         <td class="botoes">
+           <button type="submit" class="btn-editar"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+           <button type="submit" class="btn-excluir"><i class="fa fa-trash" aria-hidden="true"></i></button>
+         </td>
+       </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+ 
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Novo pedido </h5>
+      </div>
+      <div class="modal-body">
+        <input type="text" name="txtDesc" id="" class="DescCat" placeholder="Descrição:">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="fechar btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="salvar btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</main>

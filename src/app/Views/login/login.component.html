@@ -1,0 +1,30 @@
+
+<div class="main-login">
+    <div class="left-login">
+        <h1> Login Do Adiministrador </h1>
+        <img src="assets/login-animate.svg" class="left-login-image" alt="Animate" />
+    </div>
+
+    <div class="right-login">
+        <form [formGroup]="loginForm" (ngSubmit)="entrar()">
+         <div class="card-login">
+            <h1> Login </h1>
+            <div class="textfield">
+               <label for="usuario">Usuário</label>
+               <input formControlName="name" type="text" name="usuario" placeholder="Usuário" >
+               <span class="text-danger" *ngIf="loginForm.controls['name'].dirty  && loginForm.hasError('required','name')">*Nome usuário é obrigatório</span>
+            </div> 
+
+            <div class="textfield">
+                <label for="senha">Senha</label>
+                <input formControlName="password" type="password" name="senha" placeholder="Senha">
+                <span class="text-danger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">*Senha é obrigatório</span>
+            </div> 
+            <a href="cadastro">Esqueceu a senha? </a>
+
+            <button type="submit" [disabled]="!loginForm.valid" class="btn-login">Entrar</button>
+            <a href="cadastro">Não possui cadastro? </a>   
+         </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,96 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<app-menu></app-menu>
+<main>
+    <div class="table-title">
+        <h2>Produto</h2>
+        <a href="#"
+         class="btn btn-sucess"data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="escondeBotao()">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Novo
+        </a>
+    </div>
+
+    <table class="tabela">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Categoria</th>
+                <th>Quantidade</th>
+                <th>Fornecedor</th>
+                <th>Imagem</th>
+                <th>Opções</th>
+            </tr>
+        </thead>
+        <tbody class="linhas" *ngIf="produtos && produtos.length">
+          <tr *ngFor="let produto of produtos">
+              
+            <th>{{produto.name}}</th>
+            <th>{{produto.description}}</th>
+            <th>{{produto.price}}</th>
+            <th>{{produto.categoryId}}</th> 
+            <th>{{produto.amount}}</th>
+            <th>{{produto.idsupplier}}</th>
+            <th>Imagem</th>
+            <th>
+              <button type="submit" class="btn-editar" (click)="editarProduto(produto,exampleModal)"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+              <button type="submit" class="btn-excluir" (click)="excluir(produto,staticBackdrop)"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </th>
+          </tr>    
+        </tbody>
+    </table>
+  
+<!-- Modal Inserir/Alterar-->
+
+<div class="modal fade " #editar id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nova Categoria</h5>
+      </div>
+      <div class="modal-body">
+
+        <form method="post" #clientForm="ngForm">
+         <input type="text" name="txtNome" id="" class="DescCat" placeholder="Nome:"[(ngModel)]="nome" >
+        <input type="text" name="txtDesc" id="" class="DescCat" placeholder="Descrição:" [(ngModel)]="desc" >
+        <input type="number" name="numbPreco" id="" class="DescCat" placeholder="Preço:"[(ngModel)]="preco" >
+        <input type="text" name="txtCategoria" id="" class="DescCat" placeholder="Categoria:"[(ngModel)]="categoria" >
+        <input type="number" name="numbQuantidade" id="" class="DescCat" placeholder="Quantidade:"[(ngModel)]="quantidade" >
+
+        <label class="labelInput">
+        <input type="file" name="Imagem" class="imagem"  accept="image/* " (change)="inputChange($event.target.files)" [(ngModel)] ="imagem" required/>
+        <span>Importar imagem</span>
+        </label>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="closer" class="fechar btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="salvar btn btn-primary" *ngIf="botaoAdd" (click)="postProdutos()">Salvar</button>
+        <button type="button" class="salvar btn btn-primary" *ngIf="botaoUpdate" (click)="editarProdutoUpdate(editar)" >Alterar</button>
+      </div>
+    </div>
+  </div>
+</div> 
+
+<!-- Modal Excluir -->
+
+<div class="modal fade" id="staticBackdrop" #confirm data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Excluir...</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4>Deseja realmente Excluir?</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cancel" class="fechar btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="salvar btn btn-primary"(click)="excluirProduto(confirm)">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
+</main>

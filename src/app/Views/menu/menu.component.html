@@ -1,0 +1,80 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<header>
+    <div class="menu">
+        <div class="row">
+            <div class="col">
+              <div ngbDropdown class="d-inline-block">
+                <button type="button" class="btn btn-outline " id="dropdownBasic1" ngbDropdownToggle> <i class="fa fa-bars" aria-hidden="true"></i></button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="menuflut">
+                  <a href="home" ngbDropdownItem>
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    Home
+                  </a>
+
+                    <div class="row">
+                      <div class="col">
+                        <div ngbDropdown class="d-inline-block">
+                          <button type="button" class="btn btn btn-cadas" id="dropdownBasic1" ngbDropdownToggle>
+                            <i class="cadas fa fa-plus" aria-hidden="true"></i>
+                            <span>Cadastrar</span>
+
+                          </button>
+                          <div ngbDropdownMenu aria-labelledby="dropdownBasic1"class="menuflutCadas">
+                            <a href="categoria" ngbDropdownItem>Categoria</a>
+                            <a  href="cliente"ngbDropdownItem>Cliente</a>
+                            <a  href="compra"ngbDropdownItem>Compra</a>
+                            <a  href="fornecedor"ngbDropdownItem>Fornecedor</a>
+                            <a  href="pagamento"ngbDropdownItem>Pagamento</a>
+                            <a  href="pedido"ngbDropdownItem>Pedido</a>
+                            <a href="produto"ngbDropdownItem>Produto</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <a href="" ngbDropdownItem>
+                    <i class="fa fa-sign-out sair" aria-hidden="true">
+
+                    </i>
+                    Sair
+                  </a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <a class="navbar-brand" >
+        <img src="assets/LogoPrin.png" alt="">
+    </a>
+
+     
+
+      <div class="user">
+        <div class="row">
+            <div class="col">
+              <div ngbDropdown class="d-inline-block">
+                <button type="button" class="btn" id="dropdownForm1" ngbDropdownToggle><i class="fa fa-user-circle" aria-hidden="true"></i></button>
+                <div ngbDropdownMenu aria-labelledby="dropdownForm1">
+                  <form class="px-4 py-3">
+                    <div class="mb-3">
+                      <label for="exampleDropdownFormText1">Nome</label>
+                      <input type="text" class="form-control" id="exampleDropdownFormPassword1" placeholder="Nome" autocomplete="current-password"readonly>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleDropdownFormEmail1">Email</label>
+                      <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com" autocomplete="username"readonly>
+                    </div>
+                  </form>
+                  <div class="dropdown-divider"></div>
+                  <a  href="" type="button" ngbDropdownItem>
+                    <i class="fa fa-sign-out sair" aria-hidden="true"></i>
+                    <label for=""> Sair</label>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </header>
+
+

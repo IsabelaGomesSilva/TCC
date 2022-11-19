@@ -55,7 +55,8 @@
             <input type="text" name="CPF" id="cpf" class="DescCat" placeholder="CPF:" mask="000.000.000-00" [(ngModel)]="cpf" required ngModel>
             <input type="date" name="datanascimento" id="Birth" class="DescCat" placeholder="Data de nascimento:" [(ngModel)]="aniv"  required ngModel> 
             <input type="tel" name="telefone" id="Fone" class="DescCat " placeholder="Telefone:"mask="(00) 0 0000-0000 " [(ngModel)]="fone"  required ngModel>
-            <input type="email" name="email" id="Email" class="DescCat" placeholder="Email:" [(ngModel)]="email"  required ngModel>
+            <input type="email" name="email" id="Email" class="DescCat" placeholder="Email:" [(ngModel)]="email"  required ngModel email>
+            
             <input type="password" name="senha" id="Senha" class="DescCat" placeholder="Senha:" [(ngModel)]="senha"  required ngModel>
           </form>
           
@@ -81,7 +82,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h4>Deseja realmente Excluir?</h4>
+        <h4>Deseja realmente excluir?</h4>
       </div>
       <div class="modal-footer">
         <button type="button" id="cancel" class="fechar btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Order } from 'src/app/Models/Order';
+import { OrderDetails } from 'src/app/Models/OrderDetails';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -11,11 +12,20 @@ import { environment } from 'src/environments/environment';
 })
 export class PedidoComponent implements OnInit {
 
+  detalhespedidos:any;
   pedidos:any;
-  valorTotal:any;
   data:any;
   pagament:any;
-  cliente:any;
+  cliente:any; 
+  produto:any;
+  quantd:any;
+  valorUni:any;
+  valorTotal:any;
+  filterOrder:any;
+  detalhepedido:any;
+  
+
+  orderdetails!: OrderDetails;
   order!:Order;
   botaoAdd !: boolean;
   botaoUpdate !: boolean;
@@ -24,14 +34,36 @@ export class PedidoComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+   
     this.getPedidos();
+   
   }
 
   postPedidos() {
-    var order = {valueTotal:this.valorTotal,date:this.data,
-      idPayment:this.pagament,idClient:this.cliente} ;
+    var order = {date:this.data,idPayment:this.pagament,idClient:this.cliente,idProduct:this.produto,amountOrder:this.quantd, 
+      valueUni:this.valorUni,valueTotal:this.valorTotal } ;
 
       this.http.post(`${environment.apibaseURL}api/Order`,order)
+      .subscribe(
+        resultado => {
+          console.log(resultado);
+          this.getPedidos();
+         
+          let ref = document.getElementById('closer')
+          ref?.click();
+          
+        },
+        erro => {
+          if(erro.status == 400) {
+            console.log(erro);
+          }
+        }
+      );
+  }
+  postDetalhePedido() {
+    var orderdetails = { } ;
+
+      this.http.post(`${environment.apibaseURL}api/Order`,orderdetails)
       .subscribe(
         resultado => {
           console.log(resultado);
@@ -50,6 +82,7 @@ export class PedidoComponent implements OnInit {
     
   }
 
+
   getPedidos(){
     this.http.get(`${environment.apibaseURL}api/Order`)
     .subscribe(response => {
@@ -57,7 +90,41 @@ export class PedidoComponent implements OnInit {
       console.log(this.pedidos);
 
     });
-  }
+}
+
+
+getOrderDetails(pedido:OrderDetails, detalhepedido:OrderDetails ,template:any ){
+ this.orderdetails = pedido;
+ console.log(this.orderdetails.id);
+  
+  this.http.get(`${environment.apibaseURL}api/OrderDetails/OrderDetailsId`)
+    .subscribe(response => {
+      
+      this.detalhespedidos = response
+      console.log(this.detalhespedidos);
+    });
+  
+}
+
+// mostrarDetalhes(template:any){
+//   var pedido = {id:this.orderdetails.id}
+
+//   this.http.get(`${environment.apibaseURL}api/OrderDetails/${pedido.id}`)
+//     .subscribe(response => {
+//       this.detalhespedidos = response
+//       console.log(this.detalhespedidos);
+//     });
+// }
+  
+
+  // getOrderDetails(){
+  //   var ordedetails = {id:this.orderdetails.id}
+  //   this.http.get(`${environment.apibaseURL}api/OrderDetails/${orderdetails.id}`)
+  //   .subscribe(response => {
+  //     this.detalhespedidos = response
+  //     console.log(this.detalhespedidos);
+  //   });
+  // }
 
   excluir(order:Order,template:any){
     console.log(order);
@@ -65,22 +132,14 @@ export class PedidoComponent implements OnInit {
     
 }
 
-excluirPedido(template:any){
-  this.http.delete(`${environment.apibaseURL}api/Order/${this.order.id}`)
-            .subscribe(
-              () => {
-                this.getPedidos();
-                let ref = document.getElementById('cancel')
-                ref?.click();
-                
-              },
-              erro => {
-                if(erro.status == 404) {
-                  console.log('Pedido não localizado.');
-                }
-              }
-            );
-}
+// filter(pedido:any){
+//   this.filterOrder == this.pedidos.filter((a:any) => {
+//     if(a.pedidos == pedido )
+//     {
+//       return a;
+//     }
+//   })
+// }
 
 editarPedido(order:Order,template:any){
   this.botaoAdd = false;
@@ -91,8 +150,7 @@ editarPedido(order:Order,template:any){
 }
 
 editarPedidoUpdate(template:any){
-  var order = {id:this.order.id,valueTotal:this.valorTotal,date:this.data,
-    idPayment:this.pagament,idClient:this.cliente} ;
+  var order = {id:this.order.id,date:this.data,idPayment:this.pagament,idClient:this.cliente,idProduct:this.produto,amountOrder:this.quantd, valueUni:this.valorUni,valueTotal:this.valorTotal} ;
 
   this.http.put(`${environment.apibaseURL}api/Order/${order.id}`, order)
   .subscribe(

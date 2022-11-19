@@ -13,9 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { MenuComponent } from './Views/menu/menu.component';
 import { ClienteComponent } from './Views/cliente/cliente.component';
-import { CompraComponent } from './Views/compra/compra.component';
-import { DetalheCompraComponent } from './Views/detalhe-compra/detalhe-compra.component';
-import { DetalhePedidoComponent } from './Views/detalhe-pedido/detalhe-pedido.component';
+
 import { PagamentoComponent } from './Views/pagamento/pagamento.component';
 import { PedidoComponent } from './Views/pedido/pedido.component';
 import { ProdutoComponent } from './Views/produto/produto.component';
@@ -37,9 +35,6 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     CadastroComponent,
     MenuComponent,
     ClienteComponent,
-    CompraComponent,
-    DetalheCompraComponent,
-    DetalhePedidoComponent,
     PagamentoComponent,
     PedidoComponent,
     ProdutoComponent,
@@ -54,6 +49,7 @@ const maskConfigFunction: () => Partial<IConfig> = () => {
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     NgxMaskModule.forRoot(maskConfigFunction),
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

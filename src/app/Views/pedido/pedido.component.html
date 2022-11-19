@@ -3,7 +3,7 @@
 <main>
  
     <div class="table-title">
-        <h2>Pedido Cliente</h2>
+        <h2>Pedidos dos clientes</h2>
       
         <a href="#"
          class="btn btn-sucess"data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="escondeBotao()">
@@ -17,18 +17,20 @@
             <tr>
                 <th>Cliente</th>
                 <th>Valor </th>
+                <th>Forma de pagamento</th>
                 <th>Data e hora</th>
                 <th>Opções</th>
             </tr>
         </thead>
         <tbody class="linhas" *ngIf="pedidos && pedidos.length">
           <tr *ngFor="let pedido of pedidos">
-            <!--<th> {{pedido.id}}</th>-->
+         
              <th>{{pedido.idClient}}</th>
              <th>{{pedido.valueTotal}}</th>
+             <th>{{pedido.idPayment}}</th>
              <th>{{pedido.date}}</th> 
             <th>
-              <a  class="btn-detalecompra"data-bs-toggle="modal" data-bs-target="#detaleModal">
+              <a  class="btn-detalecompra"  (click)="getOrderDetails(pedido,detaleModal)" data-bs-toggle="modal" data-bs-target="#detaleModal" >
                 Ver detalhes da compra
                </a>
               <button type="submit" class="btn-editar" (click)="editarPedido(pedido,exampleModal)"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
@@ -44,14 +46,17 @@
   <div class="modal-dialog ">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Novo Pedido</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Novo pedido</h5>
       </div>
       <div class="modal-body">
             <form method="post" #orderForm="ngForm">
                <input type="text" name="txtClient" id="cliente" class="DescCat" placeholder="Cliente:" [(ngModel)]="cliente" required ngModel>
-                <input type="number" name="numbValor" id="valorTotal" class="DescCat" placeholder="Valor:" [(ngModel)]="valorTotal" required ngModel>
-                <input type="datetime-local" name="Data" id="data" class="DescCat" [(ngModel)]="data" required ngModel>
-                
+               <input type="datetime-local" name="Data" id="data" class="DescCat" [(ngModel)]="data" required ngModel>
+               <input type="text" name="txtproduto" id="" class="DescCat" placeholder="Produto:" [(ngModel)]="produto"  required ngModel>
+               <input type="number" name="numbvalorunit" id="" class="DescCat" placeholder="Quantidade:" [(ngModel)]="quantd"  required ngModel>
+               <input type="number" name="numbvalorunit" id="" class="DescCat" placeholder="Valor unitário:" [(ngModel)]="valorUni"  required ngModel>  
+               <input type="number" name="numbValor" id="valorTotal" class="DescCat" placeholder="Valor:" [(ngModel)]="valorTotal" required ngModel> 
+               <input type="text" name="txtFormaPagamento" id="formaPagament" class="DescCat" placeholder="Forma de pagamento:" [(ngModel)]="pagament" required ngModel>  
             </form>
       </div>
       <div class="modal-footer">
@@ -66,35 +71,22 @@
 <!-- Modal Detale-pedido -->
 
 <div class="modal fade" id="detaleModal" tabindex="-1" aria-labelledby="detaleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl ">
-    <div class="modal-content det">
+  <div class="modal-dialog ">
+    <div class="modal-content det"  >
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Detalhes da compra</h5>
         <div class="modal-fechar">
         <button type="button" id="closer" class="btn btn-close" data-bs-dismiss="modal"></button>
         </div> 
       </div>
-      <div class="modal-body det">
-      
-        Pedido
-        Produto
-        Quantidade
-        Valor unitáratio
-        SubTotal
-          <!-- *ngIf="detCompras && detCompras.length" -->
-         
-            <!-- *ngFor="let detCompra of detCompras" -->
-          <!-- <th> {{detCompra.id}}</th> --> 
-           <!-- <th>{{detCompra.idBuy}}</th>
-           <th>{{detCompra.idProduct}}</th>
-           <th>{{detCompra.amountBuy}}</th>
-           <th>{{detCompra.valueUni}}</th>
-           <th>{{detCompra.subTotal}}</th>  -->
+      <div class="modal-body det" *ngFor="let detalhepedido of detalhespedidos " >
+        <h3>Quantidade: {{detalhepedido.amountOrder}}</h3>
+        <h3>Produto: {{detalhepedido.idProduct}}</h3>
+        <h3>Valor unitário:  {{detalhepedido.valueUni}}</h3>
+        <h3>Subtotal:  {{detalhepedido.subTotal}}</h3> -->
       </div>
     </div>
   </div>
 </div>
 
-
 </main>
-

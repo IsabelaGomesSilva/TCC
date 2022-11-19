@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 export class CadastroComponent implements OnInit {
 
   public cadastroForm !: FormGroup;
+  
 
   constructor(private formBuilder : FormBuilder, private http: HttpClient, private router:Router) { }
 
@@ -26,12 +27,8 @@ export class CadastroComponent implements OnInit {
   signUp(){
     this.http.post(`${environment.apibaseURL}api/Adm`,this.cadastroForm.value)
     .subscribe(res=>{
-      alert("Cadastrado com Sucesso");
       this.cadastroForm.reset();
       this.router.navigate(['']);
-    },err=>{
-      alert("Tente novamente")
-    })
+    },)
   }
-
 }

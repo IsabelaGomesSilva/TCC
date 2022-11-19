@@ -1,11 +1,9 @@
 import { DecimalPipe } from "@angular/common";
 
 export class OrderDetails{
-    id:string='';
-  idOrder:string='';
-  idProduct:string='';
-  amountOrder!: DecimalPipe;
-  myProperty!: DecimalPipe;
-  valueUni!: DecimalPipe;
-  subTotal!: DecimalPipe;
+    id!:string
+    idProduct:string='';
+    amountOrder!:Number;
+    valueUni!: DecimalPipe;
+    subTotal!: DecimalPipe;
 }

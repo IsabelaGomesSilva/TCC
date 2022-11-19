@@ -13,7 +13,7 @@ import { environment } from 'src/environments/environment';
 export class LoginComponent implements OnInit {
   
   public loginForm !: FormGroup;
-  
+  erroDados!:boolean;
   
   constructor(private formBuilder : FormBuilder, private http : HttpClient, private router : Router) { }
 
@@ -32,10 +32,11 @@ export class LoginComponent implements OnInit {
         return a.name ===  this.loginForm.value.name && a.password ===  this.loginForm.value.password
       });
       if(user){
+        this.erroDados = false;
         this.loginForm.reset();
         this.router.navigate(['home']);
-      }else{
-        alert("Dados Inválidos");
+      }else {
+        this.erroDados = true;
       }
     })
   }

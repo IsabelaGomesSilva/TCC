@@ -17,8 +17,10 @@
                 <th>Ações</th>
             </tr>
         </thead>
+        
         <tbody class="linhas" *ngIf="categories && categories.length" >
           <tr *ngFor="let categoria of categories">
+            
            <!-- <th> {{categoria.id}}</th> -->
             <th> {{categoria.description}}</th>
             <th>

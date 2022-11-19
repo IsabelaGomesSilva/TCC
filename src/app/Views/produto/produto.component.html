@@ -2,7 +2,7 @@
 <app-menu></app-menu>
 <main>
     <div class="table-title">
-        <h2>Produto</h2>
+        <h2>Produtos</h2>
         <a href="#"
          class="btn btn-sucess"data-bs-toggle="modal" data-bs-target="#exampleModal"(click)="escondeBotao()">
             <i class="fa fa-plus" aria-hidden="true"></i>
@@ -31,8 +31,8 @@
             <th>{{produto.price}}</th>
             <th>{{produto.categoryId}}</th> 
             <th>{{produto.amount}}</th>
-            <th>{{produto.idsupplier}}</th>
-            <th>Imagem</th>
+            <th>{{produto.idSupplier}}</th>
+            <th>{{produto.urlArquivo}}</th>
             <th>
               <button type="submit" class="btn-editar" (click)="editarProduto(produto,exampleModal)"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
               <button type="submit" class="btn-excluir" (click)="excluir(produto,staticBackdrop)"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-trash" aria-hidden="true"></i></button>
@@ -47,7 +47,7 @@
   <div class="modal-dialog ">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Nova Categoria</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Novo produto</h5>
       </div>
       <div class="modal-body">
 
@@ -55,13 +55,27 @@
          <input type="text" name="txtNome" id="" class="DescCat" placeholder="Nome:"[(ngModel)]="nome" >
         <input type="text" name="txtDesc" id="" class="DescCat" placeholder="Descrição:" [(ngModel)]="desc" >
         <input type="number" name="numbPreco" id="" class="DescCat" placeholder="Preço:"[(ngModel)]="preco" >
-        <input type="text" name="txtCategoria" id="" class="DescCat" placeholder="Categoria:"[(ngModel)]="categoria" >
         <input type="number" name="numbQuantidade" id="" class="DescCat" placeholder="Quantidade:"[(ngModel)]="quantidade" >
-
+        <label>Selecione uma categoria:
+          <select name="select" [(ngModel)]="categoria" >
+            <option> </option>
+            <option  *ngFor="let categoria of categories">{{categoria.description}}</option>
+          </select>
+          </label>
+       
+        <label>Selecione um fornecedor:
+          <select name="select" [(ngModel)]="fornecedor" >
+            <option> </option>
+            <option  *ngFor="let fornecedor of fornecedores">{{fornecedor.nameCompany}}</option>
+          </select>
+          </label>
+        <br> 
+        
         <label class="labelInput">
-        <input type="file" name="Imagem" class="imagem"  accept="image/* " (change)="inputChange($event.target.files)" [(ngModel)] ="imagem" required/>
+        <input type="file" name="Imagem" class="imagem" id="file-id" accept="image/* " (change)="inputChange($any($event.target).files)" [(ngModel)] ="imagem" required/>
         <span>Importar imagem</span>
         </label>
+       
 
         </form>
       </div>
@@ -84,7 +98,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h4>Deseja realmente Excluir?</h4>
+        <h4>Deseja realmente excluir?</h4>
       </div>
       <div class="modal-footer">
         <button type="button" id="cancel" class="fechar btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

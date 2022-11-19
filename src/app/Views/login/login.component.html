@@ -1,7 +1,6 @@
 
 <div class="main-login">
     <div class="left-login">
-        <h1> Login Do Adiministrador </h1>
         <img src="assets/login-animate.svg" class="left-login-image" alt="Animate" />
     </div>
 
@@ -19,11 +18,11 @@
                 <label for="senha">Senha</label>
                 <input formControlName="password" type="password" name="senha" placeholder="Senha">
                 <span class="text-danger" *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')">*Senha é obrigatório</span>
+                <span class="text-danger" *ngIf="erroDados">*Dados invalidos</span>
             </div> 
-            <a href="cadastro">Esqueceu a senha? </a>
-
             <button type="submit" [disabled]="!loginForm.valid" class="btn-login">Entrar</button>
-            <a href="cadastro">Não possui cadastro? </a>   
+            <a href="cadastro">Não possui cadastro? </a> 
+              
          </div>
         </form>
     </div>

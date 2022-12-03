@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 import {HttpBackend, HttpClient, HttpClientModule} from '@angular/common/http';
-import { FormGroup, NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Category } from 'src/app/Models/Category';
 import { ToastrService } from 'ngx-toastr';
@@ -23,16 +23,16 @@ export class CategoriaComponent implements OnInit {
   currentCategoryId!: string;
   botaoAdd !: boolean;
   botaoUpdate !: boolean;
+  
   @ViewChild('categoryForm') form !: NgForm;
+
  
 
-  constructor(private http: HttpClient,private toastr: ToastrService) { }
+  constructor( private http: HttpClient,private toastr: ToastrService) { }
 
   ngOnInit(): void {
-
     this.getCategories();
-   
-
+     
   }
 
 
@@ -95,10 +95,7 @@ excluir(categoria:Category,template:any){
       this.botaoAdd = false;
       this.botaoUpdate = true;
        console.log(categoria);
-       this.category=categoria;
-       
-       
-       
+       this.category=categoria; 
   }
     
   editarCategoryUpdate(template:any){
@@ -126,12 +123,4 @@ excluir(categoria:Category,template:any){
       this.botaoAdd = true;
       this.botaoUpdate = false;
   }
-  
-  
-  
-
-
-
-
-
 }

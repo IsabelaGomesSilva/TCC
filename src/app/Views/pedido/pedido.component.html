@@ -28,7 +28,7 @@
              <th>{{pedido.idClient}}</th>
              <th>{{pedido.valueTotal}}</th>
              <th>{{pedido.idPayment}}</th>
-             <th>{{pedido.date}}</th> 
+             <th>{{pedido.date | date:'dd/MM/y'}}</th> 
             <th>
               <a  class="btn-detalecompra"  (click)="getOrderDetails(pedido,detaleModal)" data-bs-toggle="modal" data-bs-target="#detaleModal" >
                 Ver detalhes da compra

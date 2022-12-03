@@ -25,11 +25,11 @@
         </thead>
         <tbody class="linhas" *ngIf="produtos && produtos.length">
           <tr *ngFor="let produto of produtos">
-              
+
             <th>{{produto.name}}</th>
             <th>{{produto.description}}</th>
             <th>{{produto.price}}</th>
-            <th>{{produto.categoryId}}</th> 
+            <th>{{produto.categoryId}}</th>
             <th>{{produto.amount}}</th>
             <th>{{produto.idSupplier}}</th>
             <th>{{produto.urlArquivo}}</th>
@@ -37,10 +37,10 @@
               <button type="submit" class="btn-editar" (click)="editarProduto(produto,exampleModal)"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
               <button type="submit" class="btn-excluir" (click)="excluir(produto,staticBackdrop)"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa fa-trash" aria-hidden="true"></i></button>
             </th>
-          </tr>    
+          </tr>
         </tbody>
     </table>
-  
+
 <!-- Modal Inserir/Alterar-->
 
 <div class="modal fade " #editar id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -62,20 +62,20 @@
             <option  *ngFor="let categoria of categories">{{categoria.description}}</option>
           </select>
           </label>
-       
+
         <label>Selecione um fornecedor:
           <select name="select" [(ngModel)]="fornecedor" >
             <option> </option>
             <option  *ngFor="let fornecedor of fornecedores">{{fornecedor.nameCompany}}</option>
           </select>
           </label>
-        <br> 
-        
+        <br>
+
         <label class="labelInput">
         <input type="file" name="Imagem" class="imagem" id="file-id" accept="image/* " (change)="inputChange($any($event.target).files)" [(ngModel)] ="imagem" required/>
         <span>Importar imagem</span>
         </label>
-       
+
 
         </form>
       </div>
@@ -86,7 +86,7 @@
       </div>
     </div>
   </div>
-</div> 
+</div>
 
 <!-- Modal Excluir -->
 

@@ -15,7 +15,7 @@
             <tr>
                 <th>Nome</th>
                 <th>CPF</th>
-                <th>Nascimento</th>
+                <th>Data</th>
                 <th>Telefone</th>
                 <th>Email</th>
                 <th>Senha</th>
@@ -26,9 +26,9 @@
           <tr *ngFor="let cliente of clientes">
            <!-- <th>{{cliente.id}}</th> -->
             <th>{{cliente.name}}</th> 
-            <th>{{cliente.cpf}}</th>
-            <th>{{cliente.birth}}</th>
-            <th>{{cliente.phone}}</th>
+            <th>{{cliente.cpf }}</th>
+            <th>{{cliente.birth|date:'dd/MM/y'}}</th>
+            <th>{{cliente.phone }}</th>
             <th>{{cliente.email}}</th>
             <th>{{cliente.password}}</th>
             <th>

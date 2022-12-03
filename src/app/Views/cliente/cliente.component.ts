@@ -4,11 +4,16 @@ import { NgForm } from '@angular/forms';
 import { Client } from 'src/app/Models/Client';
 import { environment } from 'src/environments/environment';
 
+
+
+
 @Component({
   selector: 'app-cliente',
   templateUrl: './cliente.component.html',
-  styleUrls: ['./cliente.component.css']
+  styleUrls: ['./cliente.component.css'],
+  
 })
+
 
 export class ClienteComponent implements OnInit {
   clientes:any;
@@ -23,11 +28,14 @@ export class ClienteComponent implements OnInit {
   botaoUpdate !: boolean;
   @ViewChild('clientForm') form !: NgForm;
 
+ 
+
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getClientes();
   }
+
 
   postClientes() {
     var client = {name:this.nome,cpf:this.cpf,birth:this.aniv,phone:this.fone,

@@ -4,7 +4,7 @@
     <div class="table-title">
         <h2>Pagamento</h2>
         <a href="#"
-        class="btn btn-sucess"data-bs-toggle="modal" data-bs-target="#exampleModal" >
+        class="btn btn-sucess"data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="escondeBotao()">
             <i class="fa fa-plus" aria-hidden="true"></i>
             Novo
         </a> 
@@ -22,7 +22,7 @@
           <tr *ngFor="let pagamento  of pagamentos">
             <th> {{pagamento.description}}</th>
             <th>
-              <button type="submit" class="btn-editar" (click)="editarCategory(pagamento,exampleModal)"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+              <button type="submit" class="btn-editar" (click)="editarPayment(pagamento,exampleModal)"  data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pencil" aria-hidden="true"></i></button>
               <button type="submit" class="btn-excluir" (click)="excluir(pagamento,staticBackdrop)"  data-bs-toggle="modal" data-bs-target="#staticBackdrop" ><i class="fa fa-trash" aria-hidden="true"></i></button>
             </th>
           </tr>   
@@ -38,14 +38,14 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form method="post" [formGroup]="formValue" #categoryForm="ngForm">
-            <input type="text" name="CatDesc" id="CatDesc" class="DescCat" placeholder="Descrição:" formControlName="descricao" ngModel  required>
+        <form method="post"  #categoryForm="ngForm"  >
+            <input type="text" name="CatDesc" id="CatDesc" class="DescCat" placeholder="Descrição:" [(ngModel)]="desc"  ngModel  required>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" id="closer" class="fechar btn btn-secondary" data-bs-dismiss="modal" >Fechar</button>
-        <button type="button" class="salvar btn btn-primary"  (click)="postPagamento()"  >Salvar</button>
-        <!-- <button type="button" class="salvar btn btn-primary"   (click)="editarCategoryUpdate(editar)"  >Alterar</button> -->
+        <button type="button" class="salvar btn btn-primary" *ngIf="botaoAdd"  (click)="postPagamentos()"  >Salvar</button>
+        <button type="button" class="salvar btn btn-primary" *ngIf="botaoUpdate"  (click)="editarPaymentUpdate(editar)"  >Alterar</button>
       </div>
     </div>
   </div>
@@ -65,7 +65,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" id="cancel" class="fechar btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <!-- <button type="button" class="salvar btn btn-primary"(click)="excluirCategory(confirm)">Excluir</button> -->
+        <button type="button" class="salvar btn btn-primary"(click)="excluirPagamento(confirm)">Excluir</button>
       </div>
     </div>
   </div>
